@@ -86,7 +86,7 @@ jobs:
           repo: ${{ inputs.docker-repo }}
           region: eu-central-1
           tags: ${{ env.TAG }}
-          dockerfile: "${{ env.working-directory }}/Dockerfile"
+          dockerfile: "${{ inputs.working-directory }}/Dockerfile"
           create_repo: false
           set_repo_policy: false
           repo_policy_file: repo-policy.json
