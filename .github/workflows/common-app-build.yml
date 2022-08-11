@@ -12,7 +12,7 @@ on:
         type: string
 
 jobs:
-  build:
+  common-java-app-build:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -90,4 +90,4 @@ jobs:
           create_repo: false
           set_repo_policy: false
           repo_policy_file: repo-policy.json
-          path: ${{ inputs.java-version }}
+          path: ${{ inputs.working-directory }}
