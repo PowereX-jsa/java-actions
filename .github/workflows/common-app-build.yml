@@ -68,7 +68,7 @@ jobs:
       - name: Set docker tag
         run: |
           if [[ ${{ github.ref }} == 'refs/heads/master' || ${{ github.ref }} == 'refs/heads/main' ]]; then
-            echo "TAG=latest,$(git rev-parse --short HEAD)" >> "$GITHUB_ENV"
+            echo "TAG=latest,prod_$(git rev-parse --short HEAD)" >> "$GITHUB_ENV"
           else
             echo "TAG=$(echo test-deploy_${{ steps.branch-name.outputs.current_branch }} | tr -s '/' '_' | tr -s '#' '_' )" >> "$GITHUB_ENV"
           fi
