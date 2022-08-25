@@ -10,6 +10,10 @@ on:
       docker-repo:
         required: true
         type: string
+      build-args:
+	requiered: false
+	type: string
+	default: build --scan sonarqube --info
 
 jobs:
   common-java-app-build:
@@ -44,7 +48,7 @@ jobs:
         uses: gradle/gradle-build-action@v2
         with:
           build-root-directory: ${{ inputs.working-directory }}
-          arguments: build --scan sonarqube --info
+          arguments: ${{ inputs.build-args }}
         env:
           # env vars for access to github-packages
           GITHUB_USERNAME: readonly@powerex.io
