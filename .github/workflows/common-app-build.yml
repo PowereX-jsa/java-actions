@@ -11,7 +11,7 @@ on:
         required: true
         type: string
       build-args:
-	requiered: false
+	required: false
 	type: string
 	default: build --scan sonarqube --info
 
