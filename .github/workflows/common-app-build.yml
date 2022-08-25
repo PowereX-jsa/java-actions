@@ -11,9 +11,9 @@ on:
         required: true
         type: string
       build-args:
-	required: false
-	type: string
-	default: build --scan sonarqube --info
+        required: false
+        type: string
+        default: build --scan sonarqube --info
 
 jobs:
   common-java-app-build:
