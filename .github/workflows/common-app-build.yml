@@ -82,6 +82,15 @@ jobs:
           echo "going to use following tag for docker image: ${{ env.TAG }}"
 
       - name: Publish docker image tag
+        run: echo "head_ref=${{ github.head_ref }}" >> $GITHUB_STEP_SUMMARY
+
+      - name: Publish docker image tag
+        run: echo "ref_name=${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+
+      - name: Publish docker image tag
+        run: echo "base_ref=${{ github.base_ref }}" >> $GITHUB_STEP_SUMMARY
+
+      - name: Publish docker image tag
         run: echo "tag=${{ env.TAG }}" >> $GITHUB_STEP_SUMMARY
 
       - name: Docker build and push
