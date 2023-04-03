@@ -80,7 +80,7 @@ jobs:
         run: echo "tag=${{ env.TAG }}" >> $GITHUB_STEP_SUMMARY
 
       - name: Docker build and push
-        uses: docker://ghcr.io/kciter/aws-ecr-action:latest
+        uses: kciter/aws-ecr-action@master
         with:
           access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
