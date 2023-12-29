@@ -17,7 +17,7 @@ on:
 
     outputs:
       tag-to-deploy:
-        description: "Published image tag for deployment immediate deployment"
+        description: "Published image tag for immediate deployment"
         value: ${{ jobs.common-java-app-build.outputs.tag-to-deploy }}
 
 jobs:
