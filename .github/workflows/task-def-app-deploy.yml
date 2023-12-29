@@ -13,10 +13,6 @@ on:
         required: true
           type: string
           description: "set this to AWS_SECRET_ACCESS_KEY of your user"
-      aws-account-id:
-        required: true
-          type: string
-          description: "set this to your aws account id"
       ecs-service:
         required: true
         type: string
