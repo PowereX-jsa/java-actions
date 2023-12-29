@@ -65,7 +65,6 @@ jobs:
           junit_files: ${{ inputs.working-directory }}/build/test-results/**/*.xml
 
       - name: Set docker tag
-        id: set-docker-tag
         run: |
           if [[ ${{ github.ref }} == 'refs/heads/master' || ${{ github.ref }} == 'refs/heads/main' ]]; then
             # set tags as env vars in current runner
@@ -102,6 +101,6 @@ jobs:
       - name: Create summary
         run: |
           # create job summary
-          echo "#### \#\# pushed tags: '${{ env.TAG }}' to aws ecr registry" >> $GITHUB_STEP_SUMMARY
-          echo "#### \#\#"
-          echo "#### \#\# going to use following tag: '${{ steps.output-docker-tag.output.TAG_TO_DEPLOY }}' for deployment" >> $GITHUB_STEP_SUMMARY
+          echo "### \#\# pushed tags: '${{ env.TAG }}' to aws ecr registry" >> $GITHUB_STEP_SUMMARY
+          echo "### \#\# "
+          echo "### \#\# going to use following tag: '${{ steps.output-docker-tag.outputs.TAG_TO_DEPLOY }}' for deployment" >> $GITHUB_STEP_SUMMARY
