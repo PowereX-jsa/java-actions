@@ -18,10 +18,14 @@ on:
 jobs:
   common-java-app-build:
     runs-on: ubuntu-latest
+
     defaults:
       run:
         shell: bash
         working-directory: ${{ inputs.working-directory }}
+
+    outputs:
+      tag-to-deploy: ${{ steps.output-docker-tag.outputs.TAG_TO_DEPLOY }}
 
     steps:
       - uses: actions/checkout@v4.1.1
@@ -102,8 +106,5 @@ jobs:
         run: |
           # create job summary
           echo "### \#\# pushed tags: '${{ env.TAG }}' to aws ecr registry" >> $GITHUB_STEP_SUMMARY
-          echo "### \#\# "
+          echo "### \#\# " >> $GITHUB_STEP_SUMMARY
           echo "### \#\# going to use following tag: '${{ steps.output-docker-tag.outputs.TAG_TO_DEPLOY }}' for deployment" >> $GITHUB_STEP_SUMMARY
-
-    outputs:
-      tag-to-deploy: steps.output-docker-tag.outputs.TAG_TO_DEPLOY
