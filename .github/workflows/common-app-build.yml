@@ -15,6 +15,10 @@ on:
         type: string
         default: build --scan sonarqube --info
 
+    outputs:
+      description: "Published image tag for deployment immediate deployment"
+      tag-to-deploy: ${{ jobs.common-java-app-build.outputs.tag-to-deploy }}
+
 jobs:
   common-java-app-build:
     runs-on: ubuntu-latest
