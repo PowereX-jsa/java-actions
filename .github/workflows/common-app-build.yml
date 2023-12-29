@@ -78,7 +78,7 @@ jobs:
           echo "following tags for docker image: ${{ env.TAG }} will be pushed"
 
           # set output tag from job, going for real tag 'test_deploy_*', or 'prod_*' not 'latest'
-          echo "TAG_TO_DEPLOY=$( echo  ${{ env.TAG }} | cut -d ',' -f 2)" >> "$GITHUB_OUTPUT"
+          echo "TAG_TO_DEPLOY=$( echo  $TAG | cut -d ',' -f 2)" >> "$GITHUB_OUTPUT"
 
           # create job summary
           echo "## pushed tags: '${{ env.TAG }}' to aws ecr registry" >> $GITHUB_STEP_SUMMARY
@@ -99,3 +99,17 @@ jobs:
           set_repo_policy: false
           repo_policy_file: repo-policy.json
           path: ${{ inputs.working-directory }}
+
+      # can`t do this in step 'Set docker tag' because for some reason env.TAG is empty - probably is filled after the step is finished
+      - name: Show published docker image tag and set it as output of job
+        id: output-docker-tag
+        run: |
+          echo "following tags for docker image: ${{ env.TAG }} will be pushed"
+
+          # set output tag from job, going for real tag 'test_deploy_*', or 'prod_*' not 'latest'
+          echo "TAG_TO_DEPLOY=$( echo  ${{ env.TAG }} | cut -d ',' -f 2)" >> "$GITHUB_OUTPUT"
+
+          # create job summary
+          echo "## pushed tags: '${{ env.TAG }}' to aws ecr registry" >> $GITHUB_STEP_SUMMARY
+          echo "## "
+          echo "## going to use following tag: '${{ steps.output-docker-tag.output.TAG_TO_DEPLOY }}' for deployment" >> $GITHUB_STEP_SUMMARY
