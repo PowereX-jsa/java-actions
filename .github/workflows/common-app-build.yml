@@ -104,3 +104,6 @@ jobs:
           echo "### \#\# pushed tags: '${{ env.TAG }}' to aws ecr registry" >> $GITHUB_STEP_SUMMARY
           echo "### \#\# "
           echo "### \#\# going to use following tag: '${{ steps.output-docker-tag.outputs.TAG_TO_DEPLOY }}' for deployment" >> $GITHUB_STEP_SUMMARY
+
+    outputs:
+      tag-to-deploy: steps.output-docker-tag.outputs.TAG_TO_DEPLOY
