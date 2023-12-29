@@ -70,12 +70,12 @@ jobs:
             # set tags as env vars in current runner
             echo "TAG=latest,prod_$(git rev-parse --short HEAD)" >> "$GITHUB_ENV"
             # set output tag from job, going for real tag 'prod_*' not 'latest'
-            echo "TAG_TO_DEPLOY=$( echo  ${{ env.TAG }} | cut -d ',' -f 2)" >> "$GITHUB_OUTPUT"
+            echo "TAG_TO_DEPLOY=$( echo  ${TAG} | cut -d ',' -f 2)" >> "$GITHUB_OUTPUT"
           else
             # set tags as env vars in current runner
             echo "TAG=$(echo test-deploy_${{ github.head_ref }} | tr -s '/' '_' | tr -s '#' '_' )" >> "$GITHUB_ENV"
             # set output tag from job
-            echo "TAG_TO_DEPLOY=${{ env.TAG }}" >> "$GITHUB_OUTPUT"
+            echo "TAG_TO_DEPLOY=${TAG}" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Show published docker image tag
