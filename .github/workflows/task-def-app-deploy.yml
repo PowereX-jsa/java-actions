@@ -29,11 +29,6 @@ on:
         type: string
         description: "image to deploy to ecs in task def, e.g. 587619238227.dkr.ecr.eu-central-1.amazonaws.com/imbalance-service"
       
-      tag:
-        required: false
-        type: string
-        default: latest
-        description: "set this if you don`t want to deploy 'latest' tag, e.g. prod_123"
       container-name:
         required: false
         type: string
@@ -78,7 +73,7 @@ jobs:
         with:
           task-definition: ${{ inputs.task-def-filename }}
           container-name: ${{ inputs.container-name }}
-          image: ${{ inputs.image }}:${{ inputs.tag }}
+          image: ${{ inputs.image }}
 
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1.4.11
