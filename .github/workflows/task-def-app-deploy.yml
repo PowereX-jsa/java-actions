@@ -3,11 +3,9 @@ on:
     secrets:
       aws-access-key-id:
         required: true
-        type: string
         description: "set this to AWS_ACCESS_KEY_ID of your user"
       aws-secret-access-key:
         required: true
-        type: string
         description: "set this to AWS_SECRET_ACCESS_KEY of your user"
     inputs:
       aws-region:
